@@ -2,24 +2,34 @@
 
 This page was supplied after the Epoch 19 adapter was trained. No verified
 official transcript is available in this repository, so the outputs below are
-not assigned CER, WER, or model wins. The human-readable heading note is only a
-visual diagnostic, not archival ground truth.
+not assigned CER, WER, or model wins. The heading note below is the author's
+unverified visual note, not archival ground truth.
+
+The image is Image 1 of Charles S. Hamlin's diary for Jan. 1–Sept. 30, 1935.
+The Library of Congress states that its digital scans of the Charles S. Hamlin
+Papers are public domain and free to use and reuse:
+
+- [LOC resource image](https://www.loc.gov/resource/mss24661m.mss24661-009_0141_0241/?sp=1&st=image)
+- [LOC item record](https://www.loc.gov/item/mss246610026/)
+- Credit: Library of Congress, Manuscript Division, Charles S. Hamlin Papers.
 
 All models received the same complete page with deterministic decoding,
 `max_pixels=1605632`, `max_new_tokens=1536`, and at most two completeness
 retries. All completed on their first attempt with valid closed XML, no detected
 token-limit truncation, and no explicit omission placeholder. Visible-text
 lengths were 860 characters for upstream CHURRO, 829 for Epoch 3, and 848 for
-Epoch 19.
+Epoch 19. These outputs are retained as a transparent model-behavior record,
+not as a scored benchmark because no verified reference transcript is present.
 
-![Input notebook page](input.png)
+![Charles S. Hamlin diary page, January 1, 1935](input.png)
 
 ## Header-only visual check
 
-The heading appears to read `1935` and `Jan 1. Tuesday. New Year Day.` Epoch 3
-captures that phrase most closely. Epoch 19's `New York` substitution is a
-known failure on this page and should not be hidden by the stronger aggregate
-100-page score.
+The author's note says the heading appears to read `1935` and
+`Jan 1. Tuesday. New Year Day.` Epoch 3 captures that note most closely. Epoch
+19's `New York` substitution is a known diagnostic failure and should not be
+hidden by the stronger aggregate 100-page score. Repository readers should
+compare this observation directly against the scan.
 
 ## Upstream CHURRO
 
@@ -135,4 +145,4 @@ This example demonstrates both sides of the adapter:
 - The protected 100-page aggregate comparison supports Epoch 19's overall
   benefit, while this page documents a real phrase-level regression.
 - Because no official transcript is present, apparent body-text improvements
-  or regressions remain hypotheses requiring human transcription.
+  or regressions remain unverified hypotheses requiring human transcription.
