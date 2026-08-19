@@ -2,7 +2,7 @@
 base_model: stanford-oval/churro-3B
 library_name: peft
 pipeline_tag: image-text-to-text
-license: other
+license: qwen-research
 tags:
   - base_model:adapter:stanford-oval/churro-3B
   - qlora
@@ -15,6 +15,11 @@ tags:
 
 # LOC Mixed-Scale CHURRO LoRA — Epoch 19
 
+> **Improved using Qwen.** This adapter is distributed for **noncommercial
+> research and evaluation only** under the Qwen Research License. It is not
+> cleared for production deployment. Government, nonprofit, or educational
+> status alone does not expand the license beyond research and evaluation.
+
 This repository contains a PEFT/LoRA adapter for
 [`stanford-oval/churro-3B`](https://huggingface.co/stanford-oval/churro-3B),
 specialized for full-page and single-line nineteenth-century English
@@ -26,6 +31,13 @@ output should not be published as archival ground truth without review.
 
 This is an independent project. It is not an official release from Stanford
 OVAL, Qwen/Alibaba Cloud, or the Library of Congress.
+
+Anyone evaluating operational use should review [`LICENSE`](LICENSE),
+[`NOTICE`](NOTICE), and [`MODIFICATIONS.md`](MODIFICATIONS.md) first. The Qwen
+license includes indemnification, governing-law, and jurisdiction provisions
+that may require separate institutional or federal-agency legal review. A
+different license from Alibaba Cloud is required for use outside the granted
+noncommercial research/evaluation scope.
 
 ## Why use Epoch 19?
 
@@ -92,20 +104,21 @@ for model development—not a final generalization claim. See
 
 ## Qualitative page comparison without an official transcript
 
-The following 1935 notebook scan was supplied after Epoch 19 was trained. It
-was **not** part of the scored 100-page comparison and has **no verified official
-page transcript available here**. Consequently, this example has no CER, WER,
-win/loss label, or claimed ground truth. It is included so readers can compare
-the models directly against the handwriting rather than only aggregate metrics.
-
-![Unscored 1935 notebook page](evaluation/examples/1935-notebook-page/input.png)
+The following comparison was produced from a 1935 notebook scan supplied after
+Epoch 19 was trained. It was **not** part of the scored 100-page comparison and
+has **no verified official page transcript available here**. The scan's source
+record and Rights and Access URL were not supplied, so the image itself is
+intentionally **not redistributed in this repository**. Consequently, this
+text-only diagnostic has no CER, WER, win/loss label, or claimed ground truth.
 
 All three runs used the identical full-page image, deterministic decoding,
 `max_pixels=1605632`, `max_new_tokens=1536`, and the same completeness-retry
 policy. Each completed on its first attempt with closed XML and no explicit
 omission marker.
 
-The page heading is visually readable enough to expose an important difference:
+The author's visual note for the page heading exposes an important difference,
+but it is not an official transcript and cannot be independently verified from
+this repository because the source image is withheld:
 
 | Source | Heading transcription |
 |---|---|
@@ -132,8 +145,10 @@ The opening body lines also differ materially:
 Without a verified transcript, none of these body variants should be declared
 correct from model agreement alone. The complete outputs are preserved in
 [`evaluation/examples/1935-notebook-page/README.md`](evaluation/examples/1935-notebook-page/README.md)
-for visual review. This example is qualitative evidence about behavior, not a
-replacement for the protected 100-page measurement.
+as a transparent behavior record. This text-only example is not visual evidence
+and does not replace the protected 100-page measurement. The image may be added
+later only with a verified source record, Rights and Access link, and credit
+line.
 
 ## What is included
 
@@ -212,6 +227,13 @@ descriptions and heuristic whole-file transcript assignments were excluded.
 Capitalization and punctuation were preserved. Training and validation were
 source-disjoint, and protected evaluation sources had zero overlap with either.
 
+The Library of Congress identifies the digitized Abraham Lincoln Papers scans
+used here as public domain. Its released Abraham Lincoln transcription dataset
+is also marked Public Domain/CC0. See the official
+[collection Rights and Access statement](https://www.loc.gov/collections/abraham-lincoln-papers/about-this-collection/rights-and-access/)
+and [transcription dataset record](https://www.loc.gov/item/2025475020/).
+Credit line: Library of Congress, Manuscript Division, Abraham Lincoln Papers.
+
 ## Training method
 
 The adapter began as a clean LoRA on the upstream CHURRO base and was optimized
@@ -270,6 +292,18 @@ python scripts/finetune.py \
 A safer fast experiment is one epoch at `1e-5`, followed by `5e-6` with early
 stopping, while selecting checkpoints using generated CER/WER and visual
 coverage—not validation loss alone.
+
+## Why CHURRO is autoregressive
+
+CHURRO inherits Qwen2.5-VL's causal language-model decoder. It generates each
+text token conditioned on the image and preceding tokens. This supports
+variable-length transcription, spelling and punctuation priors, flexible XML
+structure, and prompt-selected output schemas. It also permits premature valid
+XML closure and silent omission.
+
+Autoregression cannot be removed with a generation flag. A non-autoregressive
+successor would need a new decoder and new training objective; this LoRA would
+not be directly compatible.
 
 ## Intended use and limitations
 
