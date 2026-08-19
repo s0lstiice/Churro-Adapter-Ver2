@@ -1,0 +1,22 @@
+{
+  "examples": 100,
+  "scored_examples": 100,
+  "unscored_examples": 0,
+  "pages": 100,
+  "lines": 0,
+  "character_edits": 27052,
+  "target_characters": 81518,
+  "word_edits": 6224,
+  "target_words": 14915,
+  "prediction_characters": 79698,
+  "prediction_words": 14535,
+  "cer": 0.33185308766162075,
+  "wer": 0.41729802212537714,
+  "output_character_ratio": 0.9776736426310754,
+  "generation_truncated_examples": 0,
+  "generation_truncation_rate": 0.0,
+  "explicit_omission_examples": 0,
+  "generation_incomplete_examples": 0,
+  "retry_attempted_examples": 5,
+  "retry_succeeded_examples": 5
+}

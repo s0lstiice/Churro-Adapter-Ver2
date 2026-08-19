@@ -1,0 +1,98 @@
+[
+  {
+    "epoch": 2,
+    "train_loss": 1.0278091058891168,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.7605326045863786,
+    "validation_task_losses": {
+      "line": 1.145331288416249,
+      "page": 0.3757339207565083
+    },
+    "learning_rate": 3.125e-06
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.9672793681276517,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.7099653299735633,
+    "validation_task_losses": {
+      "line": 1.0654952607724364,
+      "page": 0.35443539917469025
+    },
+    "learning_rate": 4.990486745229364e-06
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.901983068547032,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.6756082909172791,
+    "validation_task_losses": {
+      "line": 1.0097235204743673,
+      "page": 0.3414930613601909
+    },
+    "learning_rate": 4.884292376870567e-06
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.8624611472843369,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.6587206254125557,
+    "validation_task_losses": {
+      "line": 0.981622859750959,
+      "page": 0.33581839107415257
+    },
+    "learning_rate": 4.665063509461098e-06
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.8357006398108506,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.6501692321037155,
+    "validation_task_losses": {
+      "line": 0.9696219769680421,
+      "page": 0.33071648723938885
+    },
+    "learning_rate": 4.34319334202531e-06
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.8165729578709366,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.643274585960826,
+    "validation_task_losses": {
+      "line": 0.9594521302796872,
+      "page": 0.3270970416419646
+    },
+    "learning_rate": 3.933941090877615e-06
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.8019496918913968,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.63580839341651,
+    "validation_task_losses": {
+      "line": 0.9476210625126082,
+      "page": 0.3239957243204117
+    },
+    "learning_rate": 3.4567085809127247e-06
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.7889134206277708,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.6330677452926219,
+    "validation_task_losses": {
+      "line": 0.9443983449089115,
+      "page": 0.3217371456763324
+    },
+    "learning_rate": 2.9341204441673267e-06
+  }
+]

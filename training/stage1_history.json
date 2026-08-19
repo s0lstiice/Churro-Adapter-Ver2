@@ -1,0 +1,14 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 1.1258422315874188,
+    "trained_pages": 2993,
+    "skipped_overlength": 7,
+    "validation_loss": 0.7837694751324631,
+    "validation_task_losses": {
+      "line": 1.1830821132629574,
+      "page": 0.3844568370019688
+    },
+    "learning_rate": 0.0
+  }
+]
