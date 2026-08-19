@@ -271,20 +271,6 @@ A safer fast experiment is one epoch at `1e-5`, followed by `5e-6` with early
 stopping, while selecting checkpoints using generated CER/WER and visual
 coverage—not validation loss alone.
 
-## Why CHURRO is autoregressive
-
-CHURRO inherits Qwen2.5-VL's causal language-model decoder. It generates each
-text token conditioned on the image and preceding tokens. This supports
-variable-length transcription, spelling and punctuation priors, flexible XML
-structure, and prompt-selected output schemas. It also permits premature valid
-XML closure and silent omission.
-
-Autoregression cannot be removed with a generation flag. A non-autoregressive
-successor would need a new decoder and new training objective; this LoRA would
-not be directly compatible. The recommended next experiment is a dedicated
-line/polygon proposer plus a CTC-style line recognizer, optionally using Epoch
-19 only for alignment or confidence. See [`ARCHITECTURE_ROADMAP.md`](ARCHITECTURE_ROADMAP.md).
-
 ## Intended use and limitations
 
 - Use for research and assisted transcription of similar English historical
